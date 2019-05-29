@@ -30,10 +30,12 @@ server <- function(input, output) {
       filter(sex == input$gender,
              name == str_to_title(input$name)) %>%
       ggplot(aes(x = year, y = n, color = name)) +
-      geom_line() +
+      geom_line(size = 1) +
       labs(title = paste0("You Selected: ", input$name),
            y = "Number of People with that Name",
            x = "Year") +
+      scale_x_continuous(breaks = c(1880, 1900, 1920, 1940, 1960, 1980, 2000),
+                         labels = c(1880, 1900, 1920, 1940, 1960, 1980, 2000)) +
       theme_light()
   )
 }
